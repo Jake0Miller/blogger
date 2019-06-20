@@ -1,4 +1,4 @@
-class Article < ActiveRecord::Base
+class Article < ApplicationRecord
   validates_presence_of :title, :body
   has_many :comments
   has_many :taggings
@@ -6,5 +6,10 @@ class Article < ActiveRecord::Base
 
   def tag_list
     tags.join(", ")
+  end
+
+  def tag_list=(tags_string)
+    tag_names = tags_string.split(", ").map {|s| s.downcase}.uniq
+    self.tags = tag_names.map {|name| Tag.find_or_create_by(name: name)}
   end
 end

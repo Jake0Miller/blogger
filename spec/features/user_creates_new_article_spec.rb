@@ -16,9 +16,8 @@ describe "user creates a new article" do
 
         expect(page).to have_content("New Title!")
         expect(page).to have_content("New Body!")
-        expect(page).to have_content("ruby")
-        expect(page).to have_content("technology")
-        expect(page).to have_content("Article 'New Title!' Created!")
+        expect(page).to have_content("Article New Title! Created!")
+        expect(page).to have_content("ruby technology")
       end
     end
   end

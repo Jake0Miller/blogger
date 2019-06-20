@@ -15,15 +15,14 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
-    @article.save
-    flash.notice = "Article '#{@article.title}' Created!"
+    @article = Article.create!(article_params)
+    flash.notice = "Article #{@article.title} Created!"
     redirect_to article_path(@article)
   end
 
   def destroy
     @article.destroy
-    flash.notice = "Article Deleted!"
+    flash.notice = "Article #{@article.title} Deleted!"
     redirect_to articles_path
   end
 
@@ -32,14 +31,14 @@ class ArticlesController < ApplicationController
 
   def update
     @article.update(article_params)
-    flash.notice = "Article '#{@article.title}' Updated!"
+    flash.notice = "Article #{@article.title} Updated!"
     redirect_to article_path(@article)
   end
 
   private
 
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, :tag_list)
   end
 
   def set_article

@@ -34,12 +34,16 @@ ActiveRecord::Schema.define(version: 20190620071030) do
   create_table "taggings", force: :cascade do |t|
     t.bigint "tag_id"
     t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_taggings_on_article_id"
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "comments", "articles"
