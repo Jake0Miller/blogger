@@ -1,0 +1,16 @@
+<h1><%= @author.username %></h1>
+
+<p>
+  <strong>Username:</strong>
+  <%= @author.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @author.email %>
+</p>
+<br/>
+
+<%= link_to 'Edit', edit_author_path(@author) %> |
+<%= link_to 'Delete', @author, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Index', authors_path %>
